@@ -56,7 +56,13 @@ export default function SimpleModal({ handleAdd }) {
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2>Add Your Movies</h2>
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleAdd(newFilm);
+          handleClose();
+        }}
+      >
         <label>Name</label>
         <input
           type="text"
@@ -115,14 +121,7 @@ export default function SimpleModal({ handleAdd }) {
           }}
         />
         <br />
-        <input
-          type="submit"
-          value="Add Movie"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleAdd(newFilm);
-          }}
-        />
+        <input type="submit" value="Add Movie" />
       </form>
     </div>
   );

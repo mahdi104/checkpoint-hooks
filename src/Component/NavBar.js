@@ -16,7 +16,6 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Rating from "./Rating";
 import { useState } from "react";
-import AddMovie from "./AddMovie";
 import { Modal } from "@material-ui/core";
 import SimpleModal from "./Modal";
 
@@ -183,7 +182,7 @@ export default function PrimarySearchAppBar({
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            MovieApp
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
