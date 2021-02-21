@@ -1,7 +1,11 @@
 import MovieList from "./Component/MovieList";
 import "./App.css";
+import { Route, Switch } from "react-router-dom";
 import NavBar from "./Component/NavBar";
 import React, { useState } from "react";
+import Details from "./Component/Details";
+import Errors from "./Component/Errors";
+import MovieCard from "./Component/MovieCard";
 function App() {
   const [moviesData, setMoviesData] = useState([
     {
@@ -87,14 +91,6 @@ function App() {
   const [rate, setrate] = useState(0);
   const [title, settitle] = useState("");
 
-  // const handleRating = (data) =>
-  //   setMoviesData(moviesData.filter((el) => el.rating >= data));
-  // const handleTitle = (data) =>
-  //   setMoviesData(
-  //     moviesData.filter((el) =>
-  //       el.name.toLowerCase().includes(data.toLowerCase())
-  //     )
-  //   );
   const handleAdd = (newMovie) => {
     setMoviesData([...moviesData, newMovie]);
   };
@@ -105,7 +101,19 @@ function App() {
         handleTitle={settitle}
         handleAdd={handleAdd}
       />
-      <MovieList moviesData={moviesData} rate={rate} title={title} />
+
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <MovieList moviesData={moviesData} rate={rate} title={title} />
+          )}
+        />
+
+        <Route path="/details/:name" component={Details} />
+        <Route path="/*" component={Errors} />
+      </Switch>
     </>
   );
 }
